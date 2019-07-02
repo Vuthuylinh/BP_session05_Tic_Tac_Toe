@@ -15,16 +15,18 @@
     let data = "";
     let i;
     let b=document.getElementById('carogame');
-    for(i=0;i<10;i++){
+
+    function taomang() {
+        for (i = 0; i < 10; i++) {
             board[i]=[".",".",".",".",".",".",".",".",".","."];
+            data += "<br>";
+            for (j = 0; j < 10; j++) {
+                data += board[i][j] + "&nbsp;&nbsp;&nbsp;&nbsp";
+            }
+        }
     }
-   for(i=0;i<10;i++){
-       data+="<br>";
-       for(j=0;j<10;j++){
-           data+=board[i][j]+"&nbsp;&nbsp;&nbsp;&nbsp";
-       }
-   }
-   data+="<p>";
+    taomang();
+   //data+="<p>";
    b.innerHTML=data;
    function nhapbanco() {
        data='';
@@ -34,7 +36,7 @@
                data+=board[i][j]+"&nbsp;&nbsp;";
            }
        }
-b.innerHTML=data;
+        b.innerHTML=data;
    }
 function nhap_O() {
     let hangO = parseInt(prompt("hang O: "));
@@ -68,27 +70,60 @@ function winner() {
 
             if (prevCol >= 0 && nextCol < board.length && board[i][j] === "O" && board[i][nextCol] === "O" && board[i][prevCol] === "O") {
                 alert("Người chơi O thắng");
+                if (confirm("New game?")) {
+                    taomang();
+                    nhapbanco();
+                }
+                break;
             }
             if (prevRow >= 0 && nextRow < board.length && board[i][j] === "O" && board[prevRow][j] === "O" && board[nextRow][j] === "O") {
                 alert("Người chơi O thắng");
+                if (confirm("New game?")) {
+                    taomang();
+                    nhapbanco();
+                }                break;
             }
             if (prevRow >= 0 && prevCol >= 0 && nextRow < board.length && nextCol < board.length && board[i][j] === "O" && board[i + 1][j + 1] === "O" && board[i - 1][j - 1] === "O") {
                 alert("Người chơi O thắng");
+                if (confirm("New game?")) {
+                    taomang();
+                    nhapbanco();
+                }                break;
             }
             if (prevRow >= 0 && prevCol >= 0 && nextRow < board.length && nextCol < board.length && board[i][j] === "O" && board[i + 1][j - 1] === "O" && board[i - 1][j + 1] === "O") {
                 alert("Người chơi O thắng");
+                if (confirm("New game?")) {
+                    taomang();
+                    nhapbanco();
+                }                break;
             }
             if (prevCol >= 0 && nextCol < board.length && board[i][j] === "X" && board[i][nextCol] === "X" && board[i][prevCol] === "X") {
                 alert("Người chơi X thắng");
+                if (confirm("New game?")) {
+                    taomang();
+                    nhapbanco();
+                }                break;
             }
             if (prevRow >= 0 && nextRow < board.length && board[i][j] === "X" && board[prevRow][j] === "X" && board[nextRow][j] === "X") {
                 alert("Người chơi X thắng");
+                if (confirm("New game?")) {
+                    taomang();
+                    nhapbanco();
+                }                break;
             }
             if (prevRow >= 0 && prevCol >= 0 && nextRow < board.length && nextCol < board.length && board[i][j] === "X" && board[i + 1][j + 1] === "X" && board[i - 1][j - 1] === "X") {
                 alert("Người chơi X thắng");
+                if (confirm("New game?")) {
+                    taomang();
+                    nhapbanco();
+                }                break;
             }
             if (prevRow >= 0 && prevCol >= 0 && nextRow < board.length && nextCol < board.length && board[i][j] === "X" && board[i + 1][j - 1] === "X" && board[i - 1][j + 1] === "X") {
                 alert("Người chơi X thắng");
+                if (confirm("New game?")) {
+                    taomang();
+                    nhapbanco();
+                }                break;
             }
         }
     }
