@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>tic_tac_toe</title>
+</head>
+<body>
+
+<h1>Chơi cờ caro</h1>
+<p id="carogame"></p>
+<input type="button" value="Nhập O" onclick="nhap_O();"/>
+<input type="button" Value="Nhập X" onclick="nhap_X();"/>
+<script>
+    let board =[];
+    let data = "";
+    let i;
+    let b=document.getElementById('carogame');
+    for(i=0;i<10;i++){
+            board[i]=[".",".",".",".",".",".",".",".",".","."];
+    }
+   for(i=0;i<10;i++){
+       data+="<br>";
+       for(j=0;j<10;j++){
+           data+=board[i][j]+"&nbsp;&nbsp;&nbsp;&nbsp";
+       }
+   }
+   data+="<p>";
+   b.innerHTML=data;
+   function nhapbanco() {
+       data='';
+       for(i=0;i<10;i++){
+           data+="<br>";
+           for(j=0;j<10;j++){
+               data+=board[i][j]+"&nbsp;&nbsp;";
+           }
+       }
+b.innerHTML=data;
+   }
+function nhap_O() {
+    let hangO = parseInt(prompt("hang O: "));
+    let cotO = parseInt(prompt("cot O: "));
+    if (board[hangO][cotO]===".") {board[hangO][cotO] = "O"}
+    else {alert("vị trí này đã được đánh, nhập vị trí khác!")}
+    nhapbanco();
+    winner();
+
+}
+function nhap_X() {
+        let hangX = parseInt(prompt("hang X: "));
+        let cotX = parseInt(prompt("cot X: "));
+        if(board[hangX][cotX]==="."){
+            board[hangX][cotX]="X"}
+        else{
+            alert("vị trí này đã được đánh, nhập vị trí khác!")}
+    nhapbanco();
+winner();
+}
+function winner() {
+    for (i = 0; i < board.length; i++) {
+
+        let prevRow = i - 1;
+        let nextRow = i + 1;
+
+        for (j = 0; j < board.length; j++) {
+
+            let prevCol = j - 1;
+            let nextCol = j + 1;
+
+            if (prevCol >= 0 && nextCol < board.length && board[i][j] === "O" && board[i][nextCol] === "O" && board[i][prevCol] === "O") {
+                alert("Người chơi O thắng");
+            }
+            if (prevRow >= 0 && nextRow < board.length && board[i][j] === "O" && board[prevRow][j] === "O" && board[nextRow][j] === "O") {
+                alert("Người chơi O thắng");
+            }
+            if (prevRow >= 0 && prevCol >= 0 && nextRow < board.length && nextCol < board.length && board[i][j] === "O" && board[i + 1][j + 1] === "O" && board[i - 1][j - 1] === "O") {
+                alert("Người chơi O thắng");
+            }
+            if (prevRow >= 0 && prevCol >= 0 && nextRow < board.length && nextCol < board.length && board[i][j] === "O" && board[i + 1][j - 1] === "O" && board[i - 1][j + 1] === "O") {
+                alert("Người chơi O thắng");
+            }
+            if (prevCol >= 0 && nextCol < board.length && board[i][j] === "X" && board[i][nextCol] === "X" && board[i][prevCol] === "X") {
+                alert("Người chơi X thắng");
+            }
+            if (prevRow >= 0 && nextRow < board.length && board[i][j] === "X" && board[prevRow][j] === "X" && board[nextRow][j] === "X") {
+                alert("Người chơi X thắng");
+            }
+            if (prevRow >= 0 && prevCol >= 0 && nextRow < board.length && nextCol < board.length && board[i][j] === "X" && board[i + 1][j + 1] === "X" && board[i - 1][j - 1] === "X") {
+                alert("Người chơi X thắng");
+            }
+            if (prevRow >= 0 && prevCol >= 0 && nextRow < board.length && nextCol < board.length && board[i][j] === "X" && board[i + 1][j - 1] === "X" && board[i - 1][j + 1] === "X") {
+                alert("Người chơi X thắng");
+            }
+        }
+    }
+
+}
+
+// board[0][0] = "O";
+// board[1][1] = "O";
+// board[2][2] = "O";
+// nhapbanco();
+// winner();
+</script>
+</body>
+</html>
